@@ -122,15 +122,29 @@ DOWNLOADER_MIDDLEWARES = {
     #useragent 中间件
     'scproject.middleware.user_agent_middleware.RandomUserAgentMiddleware': 400,
     'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware': None,
+    #####
     #代理的中间件
-    'scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware': None,
-    'scproject.middleware.ProxyMiddleWare.ProxyMiddleWare': 403,
-    'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware': None
+    # 'scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware': None,
+    # 'scproject.middleware.ProxyMiddleWare.ProxyMiddleWare': 403,
+    # 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware': None,
+    ####
+    #scrapy splash服务
+    'scrapy_splash.SplashCookiesMiddleware': 723,
+    'scrapy_splash.SplashMiddleware': 725,
+    'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
+    ###
 }
 
+SPIDER_MIDDLEWARES = {
+    # scrapy splash服务
+    'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
+    ##
+}
 
 ITEM_PIPELINES = {
+   # scrapy splash服务
    'scproject.MysqlPipeline.MysqlTwistedPipline': 2,
+    ####
 }
 
 #Mysql数据库的配置信息
@@ -139,3 +153,9 @@ MYSQL_DBNAME = 'sc'         #数据库名字，请修改
 MYSQL_USER = 'root'             #数据库账号，请修改
 MYSQL_PASSWD = 'root'         #数据库密码，请修改
 MYSQL_PORT = 3306               #数据库端口，在dbhelper中使用
+
+# scrapy splash服务
+DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
+HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
+SPLASH_URL = 'http://localhost:8050'
+###

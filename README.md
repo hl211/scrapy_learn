@@ -1,15 +1,49 @@
-2018-04-10 10:20:51 ĞÇÆÚ¶ş
-# ÕªÒª
-Ñ§Ï°scrapy ÅÀ³æ¿ò¼Ü£¬°üº¬ÁËÒ»Ğ©ÊµÀı
-
-#Íê³ÉÇé¿ö
-[![](Ñ§Ï°Íê³ÉÇé¿ö)](https://github.com/hl211/scrapy_learn/blob/master/img/scrapy.png)
-
-#ÔËĞĞ
-- Òª°²×°µÄÈí¼ş
+2018-04-10 10:20:51
+# æ‘˜è¦
+scrapy æ¡†æ¶çš„å­¦ä¹ 
+--------------
+# å®Œæˆæƒ…å†µ
+[![] å®Œæˆæƒ…å†µ](https://github.com/hl211/scrapy_learn/blob/master/img/scrapy.png)
+----------
+# è¿è¡Œ
+- å®‰è£…
 pip install scrapy
-- Èë¿Ú
+- å…¥å£
 main.py
-
-#×¢ÒâÊÂÏî
-´úÀíµÄipÎÄ¼şÊ¹ÓÃµÄÊÇ¾ø¶ÔµØÖ·,Ê¹ÓÃĞèÒªĞŞ¸Ä
+----------
+# æ³¨æ„äº‹é¡¹
+ä»£ç†ipæ± é‡‡ç”¨çš„æ˜¯ç»å¯¹åœ°å€
+---------
+# åŠ¨æ€è§£æç½‘ç«™
+1. åˆ©ç”¨pipå®‰è£…scrapy-splashåº“
+ ```pip install scrapy-splash```
+2. å®‰è£…docker,ç”¨dockerè¿è¡Œscrapinghub/splashï¼š
+ ```docker pull scrapinghub/splash
+    docker run -p 8050:8050 scrapinghub/splash
+ ```
+3. é…ç½®splashæœåŠ¡
+   ```
+   #splashæœåŠ¡å™¨åœ°å€
+   SPLASH_URL = 'http://localhost:8050' 
+   #å°†splash middlewareæ·»åŠ åˆ°DOWNLOADER_MIDDLEWAREä¸­ï¼š
+    DOWNLOADER_MIDDLEWARES = {
+    'scrapy_splash.SplashCookiesMiddleware': 723,
+    'scrapy_splash.SplashMiddleware': 725,
+    'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
+    } 
+    #Enable SplashDeduplicateArgsMiddleware:
+    SPIDER_MIDDLEWARES = {
+        'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
+      }
+     #Set a custom DUPEFILTER_CLASS:
+     DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
+     a custom cache storage backend:
+     HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
+    ```
+4. ä»£ç ç¼–å†™ 
+### yield SplashRequest(url, self.parse, args={'wait': 0.5}) ### 
+```
+    def start_requests(self):
+        for url in self.start_urls:
+            yield SplashRequest(url, self.parse, args={'wait': 0.5})
+```
