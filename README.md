@@ -1,9 +1,11 @@
 2018-04-10 10:20:51
 # 摘要
-scrapy 框架的学习
+   scrapy 框架的学习
+
 --------------
 
 # 完成情况
+
 ![完成情况](https://github.com/hl211/scrapy_learn/blob/master/img/scrapy.png)
 
 ----------
@@ -16,7 +18,9 @@ main.py
 
 ----------
 # 注意事项
-代理ip池采用的是绝对地址
+
+- 代理ip池采用的是绝对地址
+
 ---------
 # 动态解析网站
 1. 利用pip安装scrapy-splash库
