@@ -157,5 +157,5 @@ MYSQL_PORT = 3306               #数据库端口，在dbhelper中使用
 # scrapy splash服务
 DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
 HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
-SPLASH_URL = 'http://localhost:8050'
+SPLASH_URL = 'http://192.168.132.129:8050'
 ###

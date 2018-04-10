@@ -4,7 +4,7 @@ from scrapy_splash import SplashRequest
 
 class SplashSpider(scrapy.Spider):
     name = 'scrapy_splash'
-    start_urls = ["http://example.com", "http://example.com/foo"]
+    start_urls = ["https://item.jd.com/5871868.html"]
 
     def start_requests(self):
         for url in self.start_urls:
