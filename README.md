@@ -2,10 +2,12 @@
 # 摘要
 scrapy 框架的学习
 --------------
+
 # 完成情况
-[![] 完成情况](https://github.com/hl211/scrapy_learn/blob/master/img/scrapy.png)
+![完成情况](https://github.com/hl211/scrapy_learn/blob/master/img/scrapy.png)
 
 ----------
+
 # 运行
 - 安装
 pip install scrapy
@@ -43,7 +45,7 @@ main.py
      HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
     ```
 4. 代码编写 
-*** yield SplashRequest(url, self.parse, args={'wait': 0.5}) *** 
+***yield SplashRequest(url, self.parse, args={'wait': 0.5})*** 
 ```
     def start_requests(self):
         for url in self.start_urls:
